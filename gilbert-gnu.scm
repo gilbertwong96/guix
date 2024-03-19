@@ -6,6 +6,7 @@
  (gnu system images wsl2)
  (gnu system nss)
  (gnu packages vim)
+ (gnu packages version-control)
  )
 
 (use-package-modules bootloaders certs emacs emacs-xyz xorg)
@@ -42,6 +43,7 @@
                     ;; window managers
                     vim
                     emacs emacs-exwm emacs-desktop-environment
+                    git
                     ;; terminal emulator
                     ;; xterm
                     ;; for HTTPS access
