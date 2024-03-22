@@ -3,8 +3,19 @@
 
 (use-modules
  (gnu)
+ (gnu system nss)
  (gnu system images wsl2)
  (gnu system locale))
+
+(use-package-modules
+ vim
+ emacs
+ shells
+ tmux
+ version-control
+ commencement
+ fonts
+ fontutils)
 
 (operating-system
  (inherit wsl-os)
@@ -22,7 +33,26 @@
                 (shell (wsl-boot-program "gilbertwong")))
                %base-user-accounts))
 
- (packages %base-packages)
+ (packages (append (list
+                    ;; Fonts
+                    fontconfig
+                    font-adobe-source-han-sans
+                    font-jetbrains-mono
+                    ;; Shell
+                    fish
+                    ;; Terminal
+                    tmux
+                    ;; Version Control
+                    git
+                    ;; ToolChain
+                    gcc-toolchain
+                    ;; Editor
+                    vim
+                    emacs
+                    ) %base-packages))
  (services
   (cons* (operating-system-user-services wsl-os))
-  ))
+  )
+
+ ;; Allow resolution of '.local' host names with mDNS.
+ (name-service-switch %mdns-host-lookup-nss))
