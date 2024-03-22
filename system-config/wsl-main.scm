@@ -10,13 +10,6 @@
  (inherit wsl-os)
  (timezone "Asia/Hong_Kong")
  (locale "en_US.utf8")
- (locale-definitions
-  (list (local-definition (source "en_US")
-                          (name   "en_US.utf8"))
-        (local-definition (source "zh")
-                          (name   "zh_CN.utf8"))
-        )
-  )
 
  (users (cons* (user-account
                 (name "gilbertwong")
